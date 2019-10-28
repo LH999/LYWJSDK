@@ -3,7 +3,9 @@
 链游玩家SDK提供登录注册、支付以及应用内悬浮框功能。
 ## 用法
 将LYSDK.framework 、 LYResource.bundle 、ThirdLib拖进项目
+```
 在Other Linker Flags 加入 –ObjC
+```
 在info.plist 如下配置：
 1.配置网络
 ```
