@@ -5,10 +5,18 @@
 将LYSDK.framework 、 LYResource.bundle 、ThirdLib拖进项目
 在Other Linker Flags 加入 –ObjC
 在info.plist 如下配置：
-1.	App Transport Security Settings
+1.配置网络
+```
+App Transport Security Settings
 Allow Arbitrary Loads    YES
+
+```
+
 2.	分别添加URL Schemes 
+```
 www.bgplayer.vip  和  www.lywj.ihangwei.com
+```
+
 在AppDelegate 加入下列代码
 ```
 //微信支付回调
@@ -33,51 +41,75 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
   ```
 ##### 登录注册 
 ```
-   //注册
-    LYLoginViewController * loginVC = [[LYLoginViewController alloc]init];
-    loginVC.pageState = PageStateRegister; //注册
-    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
-    [self presentViewController:nav animated:YES completion:nil];
+ 需要添加回调代理：LYLoginViewControllerDelegate
+
+ //注册
+  LYLoginViewController * loginVC = [[LYLoginViewController alloc]init];
+  loginVC.pageState = PageStateRegister; //注册
+  loginVC.delegate = self; //代理
+  UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+  [self presentViewController:nav animated:YES completion:nil];
 
   //登录
   LYLoginViewController * loginVC = [[LYLoginViewController alloc]init];
   loginVC.pageState = PageStateLogin; //登录
+  loginVC.delegate = self;
   UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
   [self presentViewController:nav animated:YES completion:nil];
 
 ```
+##### 登录注册成功或失败回调方法
+监听登录和登出事件的回调方法 登录成功会返回 `UserInfo` 失败返回错误原因`error`
+```
+需要先添加代理：LYLoginViewControllerDelegate
+
+//登录/注册 成功
+-(void)LYLoginSucceedWithInfo:(NSDictionary *)info{
+}
+
+//登录/注册 失败
+- (void)LYFLoginFailWithError:(NSError *)error{
+}
+
+```
+
 ##### 退出登录 
 ```
-       [[LYSingletion sharedManager] loginOut];
- ```
+[[LYSingletion sharedManager] loginOut];
+```
 ##### 支付
 支付需传商品价格 和 商品描述
 ```
-            //充值
-            //操作此步骤前，请先登录
-            LYRechargeViewController * rechargeVC = [[LYRechargeViewController alloc]init];
-            rechargeVC.goodsName = @"2000元宝";//商品描述
-            rechargeVC.goodsPrice = @"0.01"; //商品价格
-            UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:rechargeVC];
-            [self presentViewController:nav animated:YES completion:nil];
+//充值
+//操作此步骤前，请先登录
+LYRechargeViewController * rechargeVC = [[LYRechargeViewController alloc]init];
+rechargeVC.goodsName = @"2000元宝";//商品描述
+rechargeVC.goodsPrice = @"0.01"; //商品价格
+UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:rechargeVC];
+[self presentViewController:nav animated:YES completion:nil];
 
 ```
-##### 事件回调 
-监听登录和登出事件的回调方法 登录成功会返回 `UserInfo` 失败返回错误原因
- ```
-       loginVC.loginSucceedblock = ^(NSDictionary * _Nonnull userInfo) {
-            };
-       loginVC.loginFailblock = ^(NSError * _Nonnull error) {
-            };
- ```
- 支付结果的回调，需要设置代理LYRechargeDelegate
+##### 支付结果的回调
+需要设置代理LYRechargeDelegate
 ```
-       -(void)LYRechargeDelegatewithSucceed:(NSDictionary *)detailInfo{
+//支付成功
+-(void)LYRechargeDelegatewithSucceed:(NSDictionary *)detailInfo{
 }
-
+//支付失败
 -(void)LYRechargeDelegatewithFail:(NSError *)error{
 }
  ```       
+## 悬浮窗功能
+悬浮框提供链游玩家的钱包、礼包、代金券、消息等功能
+
+在所需添加悬浮窗view中添加如下代码
+```    
+//创建悬浮窗
+LYFloatView * floatView = [[LYFloatView alloc]init];
+loatView.delegate = self;
+[self.view addSubview:floatView];
+```       
+ 
 ## 冲突
 如果有三方库冲突的话，请直接移除ThirdLib文件夹中对应的三方库 
 
