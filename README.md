@@ -4,7 +4,7 @@
 ## 用法
 将LYSDK.framework 、 LYResource.bundle 、ThirdLib拖进项目
 ```
-在Build Settings , Other Linker Flags 加入 –ObjC
+在Build Settings , Other Linker Flags 加入 -ObjC
 ```
 在info.plist 如下配置：
 
@@ -35,6 +35,12 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
 ```
 
 ## 代码使用
+在`AppDelegate.h`导入头文件：
+```
+#import <LYSDK/LYSDK.h>
+#import <LYSDK/LYSingletion.h>
+
+```
 初始化SDK 在应用的 `Application` ` didFinishLaunchingWithOptions
  ` 方法中 初始化下方代码 ， 参数一是链游玩家平台分配的 `appid` 参数二是链游玩家平台分配的 `key`，
 `setDebug` 方法开启sdk debug 和 release模式
@@ -43,7 +49,12 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
     [[LYSingletion sharedManager] setDebug:NO];
   ```
 ##### 登录注册 
+
 ```
+ 导入头文件
+ #import <LYSDK/LYSDK.h>
+ #import <LYSDK/LYLoginViewController.h>
+
  需要添加回调代理：LYLoginViewControllerDelegate
 
  //注册
@@ -59,7 +70,13 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
   loginVC.delegate = self;
   UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
   [self presentViewController:nav animated:YES completion:nil];
-
+  
+  //替换背景图方法：
+  //竖屏背景图
+  loginVC.bgImage = [UIImage imageNamed:@"xxx"];
+  //横屏背景图
+  loginVC.landscapebgImage = [UIImage imageNamed:@"xx"];
+  
 ```
 ##### 登录注册成功或失败回调方法
 监听登录和登出事件的回调方法 登录成功会返回 `UserInfo` 失败返回错误原因`error`
@@ -83,6 +100,9 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
 ##### 支付
 支付需传商品价格 和 商品描述
 ```
+添加头文件：
+#import <LYSDK/LYRechargeViewController.h>
+
 //充值
 //操作此步骤前，请先登录
 LYRechargeViewController * rechargeVC = [[LYRechargeViewController alloc]init];
@@ -107,12 +127,31 @@ UINavigationController * nav = [[UINavigationController alloc]initWithRootViewCo
 
 在所需添加悬浮窗view中添加如下代码
 ```    
+添加头文件：
+#import <LYSDK/LYFloatView.h>
+
 //创建悬浮窗
 LYFloatView * floatView = [[LYFloatView alloc]init];
 loatView.delegate = self;
 [self.view addSubview:floatView];
-```       
+
+```    
+## 悬浮窗登录回调
+``` 
+添加代理：LYFloatViewDelegate
+
+//悬浮框登录/注册成功
+-(void)LYFloatViewLoginSucceedWithInfo:(NSDictionary *)info{
+    
+}
+//悬浮框登录/注册失败
+-(void)LYFloatViewLoginFailWithError:(NSError *)error{
+    
+}
+
+``` 
+
  
 ## 冲突
-如果有三方库冲突的话，请直接移除ThirdLib文件夹中对应的三方库 
+如果有三方库冲突，请直接移除ThirdLib文件夹中对应的三方库 
 
