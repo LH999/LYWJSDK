@@ -4,9 +4,10 @@
 ## 用法
 将LYSDK.framework 、 LYResource.bundle 、ThirdLib拖进项目
 ```
-在Other Linker Flags 加入 –ObjC
+在Build Settings , Other Linker Flags 加入 –ObjC
 ```
 在info.plist 如下配置：
+
 1.配置网络
 ```
 App Transport Security Settings
