@@ -171,7 +171,6 @@ error: "Unity-iPhone" requires a provisioning profile. Select a provisioning pro
 
 解决方法：（Xcode11.1为例） 
 Build Settings -> Apple Clang - Language - Objective-C -> Enable Objective-C Exceptions -> 改为YES
-解决方法：（Xcode11.1为例） 
 
 4.ld: warning: arm64 function not 4-byte aligned: _unwind_tester from /Users/admin/Desktop/SDKProject/gameTest/IOS/Libraries/libiPhone-lib.a(unwind_test_arm64.o)
 Undefined symbols for architecture arm64:
@@ -190,7 +189,7 @@ Undefined symbols for architecture arm64:
 ld: symbol(s) not found for architecture arm64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
-解决方案：Build Phases -> Link Binary Libraries -> 添加Accelerate.framework
+解决方法：Build Phases -> Link Binary Libraries -> 添加Accelerate.framework
 
 
 
