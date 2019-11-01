@@ -155,7 +155,7 @@ loatView.delegate = self;
 ## 冲突
 如果有三方库冲突，请直接移除ThirdLib文件夹中对应的三方库 
 
-##报错
+## 报错
 3.ld: warning: arm64 function not 4-byte aligned: _unwind_tester from /Users/admin/Desktop/SDKProject/gameTest/IOS/Libraries/libiPhone-lib.a(unwind_test_arm64.o)
 Undefined symbols for architecture arm64:
   "_vImageBuffer_InitWithCGImage", referenced from:
@@ -172,6 +172,8 @@ Undefined symbols for architecture arm64:
       -[UIImage(Transform) sd_flippedImageWithHorizontal:vertical:] in UIImage+Transform.o
 ld: symbol(s) not found for architecture arm64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+解决方案：Build Phases -> Link Binary Libraries -> 添加Accelerate.framework
 
 
 
