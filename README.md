@@ -167,9 +167,13 @@ error: "Unity-iPhone" requires a provisioning profile. Select a provisioning pro
 
 解决方法：打开终端，1.cd 项目路径 ,2.chmod +x MapFileParser.sh           (chmod +x : 给执行权限)
 
+3.Cannot use '@try' with Objective-C exceptions disabled
 
+解决方法：（Xcode11.1为例） 
+Build Settings -> Apple Clang - Language - Objective-C -> Enable Objective-C Exceptions -> 改为YES
+解决方法：（Xcode11.1为例） 
 
-3.ld: warning: arm64 function not 4-byte aligned: _unwind_tester from /Users/admin/Desktop/SDKProject/gameTest/IOS/Libraries/libiPhone-lib.a(unwind_test_arm64.o)
+4.ld: warning: arm64 function not 4-byte aligned: _unwind_tester from /Users/admin/Desktop/SDKProject/gameTest/IOS/Libraries/libiPhone-lib.a(unwind_test_arm64.o)
 Undefined symbols for architecture arm64:
   "_vImageBuffer_InitWithCGImage", referenced from:
       -[UIImage(Transform) sd_blurredImageWithRadius:] in UIImage+Transform.o
