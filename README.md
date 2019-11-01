@@ -172,7 +172,13 @@ error: "Unity-iPhone" requires a provisioning profile. Select a provisioning pro
 解决方法：（Xcode11.1为例） 
 Build Settings -> Apple Clang - Language - Objective-C -> Enable Objective-C Exceptions -> 改为YES
 
-4.ld: warning: arm64 function not 4-byte aligned: _unwind_tester from /Users/admin/Desktop/SDKProject/gameTest/IOS/Libraries/libiPhone-lib.a(unwind_test_arm64.o)
+4.A parameter list without types is only allowed in a function definition
+  Expected ';' at end of declaration
+  insert ';'
+  
+解决方法：Build Settings -> Apple Clang - Language -> C Language Dialect -> C99改为GNU99
+
+5.ld: warning: arm64 function not 4-byte aligned: _unwind_tester from /Users/admin/Desktop/SDKProject/gameTest/IOS/Libraries/libiPhone-lib.a(unwind_test_arm64.o)
 Undefined symbols for architecture arm64:
   "_vImageBuffer_InitWithCGImage", referenced from:
       -[UIImage(Transform) sd_blurredImageWithRadius:] in UIImage+Transform.o
