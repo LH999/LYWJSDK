@@ -156,6 +156,8 @@ loatView.delegate = self;
 如果有三方库冲突，请直接移除ThirdLib文件夹中对应的三方库 
 
 ## 报错
+（Xcode11.1为例）
+
 1.Project Unity-iPhone | Configuration Debug \ destination 'xxx'的 iPhone |SDK 13.1
 error: "Unity-iPhone" requires a provisioning profile. Select a provisioning profile in the Signing & Capabilities editor. (in target 'Unity-iPhone' from project 'Unity-iPhone')
 "Unity-iPhone" requires a provisioning profile. Select a provisioning profile in the Signing & Capabilities editor.
@@ -169,7 +171,7 @@ error: "Unity-iPhone" requires a provisioning profile. Select a provisioning pro
 
 3.Cannot use '@try' with Objective-C exceptions disabled
 
-解决方法：（Xcode11.1为例） 
+解决方法： 
 Build Settings -> Apple Clang - Language - Objective-C -> Enable Objective-C Exceptions -> 改为YES
 
 4.A parameter list without types is only allowed in a function definition
