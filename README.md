@@ -156,6 +156,19 @@ loatView.delegate = self;
 如果有三方库冲突，请直接移除ThirdLib文件夹中对应的三方库 
 
 ## 报错
+1.Project Unity-iPhone | Configuration Debug \ destination 'xxx'的 iPhone |SDK 13.1
+error: "Unity-iPhone" requires a provisioning profile. Select a provisioning profile in the Signing & Capabilities editor. (in target 'Unity-iPhone' from project 'Unity-iPhone')
+"Unity-iPhone" requires a provisioning profile. Select a provisioning profile in the Signing & Capabilities editor.
+
+解决方法：Signing & Capabilities  -> Signing -> 勾选 Automatically manage signing -> Team (选个证书)
+
+2.Command PhaseScriptExecution failed with a nonzero exit code
+/Users/admin/Desktop/SDKProject/gameTest/IOS/DerivedData/Unity-iPhone/Build/Intermediates.noindex/Unity-iPhone.build/Debug-iphoneos/Unity-iPhone.build/Script-033966F41B18B03000ECD701.sh: line 2: /Users/admin/Desktop/SDKProject/gameTest/IOS-1/MapFileParser.sh: Permission denied
+
+解决方法：打开终端，1.cd 项目路径 ,2.chmod +x MapFileParser.sh           (chmod +x : 给执行权限)
+
+
+
 3.ld: warning: arm64 function not 4-byte aligned: _unwind_tester from /Users/admin/Desktop/SDKProject/gameTest/IOS/Libraries/libiPhone-lib.a(unwind_test_arm64.o)
 Undefined symbols for architecture arm64:
   "_vImageBuffer_InitWithCGImage", referenced from:
