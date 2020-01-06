@@ -139,7 +139,7 @@ loatView.delegate = self;
 [self.view addSubview:floatView];
 
 ```    
-## 悬浮窗登录回调
+## 悬浮窗回调
 ``` 
 添加代理：LYFloatViewDelegate
 
