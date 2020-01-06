@@ -61,21 +61,21 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
   LYLoginViewController * loginVC = [[LYLoginViewController alloc]init];
   loginVC.pageState = PageStateRegister; //注册
   loginVC.delegate = self; //代理
-  UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+  //若您的app为横屏，强制竖屏方法 （登录、注册、充值界面仅支持竖屏展示）
+  YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewController:loginVC];
   [self presentViewController:nav animated:YES completion:nil];
 
   //登录
   LYLoginViewController * loginVC = [[LYLoginViewController alloc]init];
   loginVC.pageState = PageStateLogin; //登录
   loginVC.delegate = self;
-  UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+  //若您的app为横屏，强制竖屏方法 （登录、注册、充值界面仅支持竖屏展示）
+  YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewController:loginVC];
   [self presentViewController:nav animated:YES completion:nil];
   
   //替换背景图方法：
   //竖屏背景图
   loginVC.bgImage = [UIImage imageNamed:@"xxx"];
-  //横屏背景图
-  loginVC.landscapebgImage = [UIImage imageNamed:@"xx"];
   
 ```
 ##### 登录注册成功或失败回调方法
@@ -108,7 +108,8 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
 LYRechargeViewController * rechargeVC = [[LYRechargeViewController alloc]init];
 rechargeVC.goodsName = @"2000元宝";//商品描述
 rechargeVC.goodsPrice = @"0.01"; //商品价格
-UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:rechargeVC];
+//若您的app为横屏，强制竖屏方法 （登录、注册、充值界面仅支持竖屏展示）
+YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewController:rechargeVC];
 [self presentViewController:nav animated:YES completion:nil];
 
 ```
