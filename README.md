@@ -135,7 +135,8 @@ YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewCo
 
 //创建悬浮窗
 LYFloatView * floatView = [[LYFloatView alloc]init];
-loatView.delegate = self;
+floatView.delegate = self;
+floatView.userId = @"xxx";//使用时必须绑定您的userid(必填)
 [self.view addSubview:floatView];
 
 ```    
