@@ -99,7 +99,7 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
 [[LYSingletion sharedManager] autoLoginVerifysuccess:^(NSDictionary * _Nonnull userInfo) {
     
 } failure:^(NSError * _Nonnull error, NSInteger code, NSString * _Nonnull message) {
-    //如code=202代表账号被封
+    //如code=202代表账号被封 400未登录过
 }];
 
 ```
