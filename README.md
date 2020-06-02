@@ -92,7 +92,17 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
 }
 
 ```
+##### 自动登录 
+```
+如不需调用登陆接口直接登陆的情况下需调用此接口验证账号，游戏方根据返回的user_id获取该用户的游戏信息，返回信息中user_id为空的情况下需要调用绑定游戏方userid接口绑定双方关系
+[[LYSingletion sharedManager] autoLoginVerifysuccess:^(NSDictionary * _Nonnull userInfo) {
+    
+} failure:^(NSError * _Nonnull error, NSInteger code, NSString * _Nonnull message) {
+    //如code=202代表账号被封
+}];
 
+
+```
 ##### 退出登录 
 ```
 [[LYSingletion sharedManager] loginOut];
