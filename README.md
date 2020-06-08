@@ -119,6 +119,7 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
 LYRechargeViewController * rechargeVC = [[LYRechargeViewController alloc]init];
 rechargeVC.goodsName = @"2000元宝";//商品描述
 rechargeVC.goodsPrice = @"0.01"; //商品价格
+rechargeVC.extra = @""; //额外信息
 rechargeVC.delegate = self;//代理
 //若您的app为横屏，强制竖屏方法 （登录、注册、充值界面仅支持竖屏展示）
 YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewController:rechargeVC];
