@@ -32,6 +32,9 @@ www.bgplayer.vip  和  www.lywj.ihangwei.com
     return NO;
 }
 
+AppDelegate.h 内添加
+@property (strong, nonatomic) UIWindow *window;
+
 ```
 
 ## 代码使用
