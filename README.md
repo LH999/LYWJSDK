@@ -56,35 +56,30 @@ AppDelegate.h 内添加
 ```
  导入头文件
  #import <LYSDK/LYSDK.h>
- #import <LYSDK/LYLoginViewController.h>
+ #import <LYSDK/LYSDKLoginViewController.h>
 
- 需要添加回调代理：LYLoginViewControllerDelegate
+ 需要添加回调代理：LYSDKLoginViewControllerDelegate
 
  //注册
-  LYLoginViewController * loginVC = [[LYLoginViewController alloc]init];
-  loginVC.pageState = PageStateRegister; //注册
-  loginVC.delegate = self; //代理
-  //若您的app为横屏，强制竖屏方法 （登录、注册、充值界面仅支持竖屏展示）
-  YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewController:loginVC];
-  [self presentViewController:nav animated:YES completion:nil];
+ LYSDKLoginViewController * loginVC = [[LYSDKLoginViewController alloc]init];
+ loginVC.pageState = PageStateRegister; //注册
+ loginVC.delegate = self;
+ YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewController:loginVC];
+ nav.modalPresentationStyle=UIModalPresentationFullScreen;
+ [self presentViewController:nav animated:YES completion:nil];
 
-  //登录
-  LYLoginViewController * loginVC = [[LYLoginViewController alloc]init];
-  loginVC.pageState = PageStateLogin; //登录
-  loginVC.delegate = self;
-  //若您的app为横屏，强制竖屏方法 （登录、注册、充值界面仅支持竖屏展示）
-  YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewController:loginVC];
-  [self presentViewController:nav animated:YES completion:nil];
-  
-  //替换背景图方法：
-  //竖屏背景图
-  loginVC.bgImage = [UIImage imageNamed:@"xxx"];
+ //登录
+ LYSDKLoginViewController * loginVC = [[LYSDKLoginViewController alloc]init];
+ loginVC.pageState = PageStateLogin; //登录
+ loginVC.delegate = self;
+ YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewController:loginVC];
+ [self presentViewController:nav animated:YES completion:nil];
   
 ```
 ##### 登录注册成功或失败回调方法
 监听登录和登出事件的回调方法 登录成功会返回 `UserInfo` 失败返回错误原因`error`
 ```
-需要先添加代理：LYLoginViewControllerDelegate
+需要先添加代理：LYSDKLoginViewControllerDelegate
 
 //登录/注册 成功
 -(void)LYLoginSucceedWithInfo:(NSDictionary *)info{
