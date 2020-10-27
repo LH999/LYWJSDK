@@ -135,7 +135,7 @@ YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewCo
 }
  ```       
 ## 悬浮窗功能
-悬浮框提供链游玩家的钱包、礼包、代金券、消息等功能
+悬浮框提供链游玩家的钱包、礼包、代金券、消息、游戏资产等功能
 
 在所需添加悬浮窗view中添加如下代码
 ```    
@@ -145,7 +145,6 @@ YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewCo
 //创建悬浮窗
 LYFloatView * floatView = [[LYFloatView alloc]init];
 floatView.delegate = self;
-floatView.userId = @"xxx";//使用时必须绑定您的userid(必填)
 [self.view addSubview:floatView];
 
 ```    
