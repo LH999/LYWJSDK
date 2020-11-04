@@ -46,9 +46,9 @@ AppDelegate.h 内添加
 ```
 初始化SDK 在应用的 `Application` ` didFinishLaunchingWithOptions
  ` 方法中 初始化下方代码 ， 参数一是链游玩家平台分配的 `appid` 参数二是链游玩家平台分配的 `key`，
-`setDebug` 方法开启sdk debug 和 release模式
+`setDebug` 方法开启sdk debug 和 release模式， `isShowAntiAddictionUI`是否展示防沉迷界面
 ```
-    [[LYSingletion sharedManager] configurationWithAppid:@" xxx " withKey:@" xxx "];
+    [[LYSingletion sharedManager] configurationWithAppid:@" xxx " withKey:@" xxx " isShowAntiAddictionUI:YES];
     [[LYSingletion sharedManager] setDebug:NO];
   ```
 ##### 登录注册 
@@ -132,6 +132,12 @@ YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewCo
 //支付失败
 -(void)LYRechargeDelegatewithFail:(NSError *)error{
 }
+
+//可选代理
+//防沉迷 充值年龄未满18岁提示
+-(void)LYRechargeDelegatewithAntiAddiction{
+}
+
  ```       
 ## 悬浮窗功能
 悬浮框提供链游玩家的钱包、礼包、代金券、消息、游戏资产等功能
@@ -164,6 +170,12 @@ floatView.delegate = self;
 -(void)LYFloatViewLogoutSucceed{
    
 }
+
+//可选代理
+-(void)LYFloatViewShareClick;//分享功能
+-(void)LYFloatViewGameOutClick;//退出游戏功能
+-(void)LYFloatViewRefreshClick;//刷新游戏功能
+-(void)LYFloatViewAntiAddictionClick;//防沉迷触发 
 
 ``` 
 
