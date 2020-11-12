@@ -70,7 +70,7 @@ AppDelegate.h 内添加
 
   
   
-##### 登录注册 
+## 登录注册 
 
 ```
  导入头文件
@@ -124,7 +124,7 @@ AppDelegate.h 内添加
 ```
 [[LYSingletion sharedManager] loginOut];
 ```
-##### 支付
+## 支付
 支付需传商品价格 和 商品描述
 ```
 添加头文件：
