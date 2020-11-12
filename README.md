@@ -158,6 +158,46 @@ YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewCo
 }
 
  ```       
+##### 验证充值状态
+可根据自己项目需求选择性设置，此方法使用前，需要先登录
+需传入参数`amount`充值金额。 ` Success` 方法返回成功回调 ， `Failure` 方法返回错误回调。
+其中code字段：200验证通过，211，212，213限制充值，其他为错误信息，
+```
+//此方法使用前，需要先登录
+[[LYSingletion sharedManager] checkPayStatewithamount:0.01 Success:^(id  _Nonnull responseObject) {
+    
+} Failure:^(NSError * _Nonnull error, NSInteger code, NSString * _Nonnull message) {
+   
+}];
+
+``` 
+其中`responseObject`返回参数示例：
+```
+{
+"code":"200",
+"data":null,
+"message":"验证通过"
+}
+{
+"code":"211",
+"data":null,
+"message":"网络游戏企业不得为未满8岁的用户提供游戏付费服务"
+}
+
+{
+"code":"212",
+"data":null,
+"message":"8周岁以上未满16周岁的用户，单次充值不得超过50元人名币；每月充值金额累计不得超过200元人名币。"
+}
+
+{
+"code":"213",
+"data":null,
+"message":"16周岁以上未满18周岁的用户，单次充值不得超过100元人名币；每月充值金额累计不得超过400元人名币。"
+}
+
+```
+ 
 ## 悬浮窗功能
 悬浮框提供链游玩家的钱包、礼包、代金券、消息、游戏资产等功能
 
