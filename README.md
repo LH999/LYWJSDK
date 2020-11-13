@@ -154,8 +154,15 @@ YGNavigationController * nav = [[YGNavigationController alloc]initWithRootViewCo
 
 //可选代理
 //防沉迷 充值年龄未满18岁提示
--(void)LYRechargeDelegatewithAntiAddiction{
-}
+-(void)LYRechargeDelegateAntiAddictionWithState:(NetworkCodeState )state; 
+
+//code 数据返回解析
+typedef NS_ENUM(NSInteger,NetworkCodeState)
+{
+    NETWORKCODE_AGE_EIGHT = 211,//充值-未满8岁
+    NETWORKCODE_AGE_SIXTEEN = 212,//充值-8到16岁
+    NETWORKCODE_AGE_EIGHTEEN = 213,//充值-16到18岁
+};
 
  ```       
 ##### 验证充值状态
@@ -234,7 +241,15 @@ floatView.delegate = self;
 -(void)LYFloatViewShareClick;//分享功能
 -(void)LYFloatViewGameOutClick;//退出游戏功能
 -(void)LYFloatViewRefreshClick;//刷新游戏功能
--(void)LYFloatViewAntiAddictionClick;//防沉迷触发  
+-(void)LYFloatViewAntiAddictionClickWithOfflineState:(AntiAddictionState )state;//防沉迷触发
+
+//防沉迷触发解析
+typedef NS_ENUM(NSInteger,AntiAddictionState)
+{
+    TOTAL_HOUR_MIDDLE_NIGHT = 1,//每日22时至次日8时，网络游戏企业不得以任何形式为未成年人提供游戏服务。
+    TOTAL_HOUR_THREE = 2,//您累计在线已满3小时，将强制下线。
+    TOTAL_HOUR_ONE_POINT_FIVE = 3,//您累计在线已满1.5小时，将强制下线。
+};
 
 ``` 
 
