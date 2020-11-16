@@ -45,16 +45,17 @@ AppDelegate.h 内添加
 
 ```
 初始化SDK 在应用的 `Application` ` didFinishLaunchingWithOptions
- ` 方法中 初始化下方代码 ， 参数一是链游玩家平台分配的 `appid` 参数二是链游玩家平台分配的 `key`，
- `isShowAntiAddictionUI`是否展示防沉迷界面 （YES-展示SDK自带防沉迷界面，NO-自定义防沉迷界面，如不需要此功能可随意填写。 防沉迷回调在下方悬浮框处。）
- 
- `setDebug` 方法开启sdk debug环境（测试环境） 和 release模式（正式环境）
- 
- `setThemeColor`设置主题颜色，`themeAssistColor`主题辅助色 ，`textClolr`文字颜色 ，`backGroundColor`背景颜色 。其中颜色值，需要传值HEX类型，例如： @"#FFFFFF" 。
- 
+ ` 方法中 初始化下方代码 
+
 ```
+    //参数一是链游玩家平台分配的 `appid` 参数二是链游玩家平台分配的 `key`，
+     isShowAntiAddictionUI 是否展示防沉迷界面 （YES-展示SDK自带防沉迷界面，NO-自定义防沉迷界面，如不需要此功能可随意填写。 防沉迷回调在下方悬浮框处。）
     [[LYSingletion sharedManager] configurationWithAppid:@" xxx " withKey:@" xxx " isShowAntiAddictionUI:YES];
+    
+    //setDebug 方法开启sdk debug环境（测试环境） 和 release模式（正式环境）
     [[LYSingletion sharedManager] setDebug:NO];
+    
+    //setThemeColor设置主题颜色，themeAssistColor主题辅助色 ，textClolr文字颜色 ，backGroundColor背景颜色 。其中颜色值，需要传值HEX类型，例如： @"#FFFFFF" 。
     [[LYSingletion sharedManager] setThemeColor:@"#FFB11B" themeAssistColor:@"#F8D891" textClolr:@"#FFFFFF" backGroundColor:@"#FFFFFF"];
 ```
 
